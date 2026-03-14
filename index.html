@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sophie">
+    <meta name="theme-color" content="#000000">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="manifest" href="manifest.json">
+    <title>Sophie</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Pro+Text:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <!-- iOS App Container -->
+    <div class="ios-app">
+        <!-- Page Formulaire -->
+        <div class="ios-page active" id="formPage">
+            <!-- iOS Navigation Bar -->
+            <nav class="ios-navbar">
+                <div class="ios-navbar-content">
+                    <h1 class="ios-nav-title">Sophie</h1>
+                </div>
+            </nav>
+
+            <div class="ios-scroll-content">
+                <!-- Hero Section -->
+                <div class="ios-hero">
+                    <div class="ios-hero-icon">✦</div>
+                    <p class="ios-hero-text">Découvre le portrait<br>de ton âme sœur</p>
+                </div>
+
+                <form id="soulForm">
+                    <!-- Groupe: Identité -->
+                    <div class="ios-section-header">IDENTITÉ</div>
+                    <div class="ios-list-group">
+                        <div class="ios-list-item">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" id="prenom" placeholder="Ton prénom" required maxlength="50">
+                        </div>
+                        <div class="ios-list-item">
+                            <label for="genre">Je suis</label>
+                            <select id="genre" required>
+                                <option value="" disabled selected>Choisir</option>
+                                <option value="femme">Une femme</option>
+                                <option value="homme">Un homme</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="ios-list-item">
+                            <label for="rechercheGenre">Je cherche</label>
+                            <select id="rechercheGenre" required>
+                                <option value="" disabled selected>Choisir</option>
+                                <option value="homme">Un homme</option>
+                                <option value="femme">Une femme</option>
+                                <option value="peu_importe">Peu importe</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Groupe: Naissance -->
+                    <div class="ios-section-header">DATE DE NAISSANCE</div>
+                    <div class="ios-list-group">
+                        <div class="ios-list-item">
+                            <label for="dateNaissance">Date</label>
+                            <input type="date" id="dateNaissance" required>
+                        </div>
+                    </div>
+
+                    <!-- Groupe: MBTI -->
+                    <div class="ios-section-header">PERSONNALITÉ</div>
+                    <div class="ios-list-group">
+                        <div class="ios-list-item mbti-quiz-trigger" id="mbtiTrigger">
+                            <label>Type MBTI</label>
+                            <div class="ios-list-item-right">
+                                <span id="mbtiResult" class="ios-detail-text">Faire le test</span>
+                                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" class="ios-chevron">
+                                    <path d="M1 1L7 7L1 13" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="mbti" value="">
+
+                    <!-- Groupe: Intérêts -->
+                    <div class="ios-section-header">CENTRES D'INTÉRÊT</div>
+                    <p class="ios-section-footer-text">Sélectionne jusqu'à 5 centres d'intérêt.</p>
+                    <div class="ios-chips-container">
+                        <label class="ios-chip"><input type="checkbox" value="art"> 🎨 Art</label>
+                        <label class="ios-chip"><input type="checkbox" value="musique"> 🎵 Musique</label>
+                        <label class="ios-chip"><input type="checkbox" value="voyage"> ✈️ Voyage</label>
+                        <label class="ios-chip"><input type="checkbox" value="sport"> ⚽ Sport</label>
+                        <label class="ios-chip"><input type="checkbox" value="lecture"> 📚 Lecture</label>
+                        <label class="ios-chip"><input type="checkbox" value="cuisine"> 🍳 Cuisine</label>
+                        <label class="ios-chip"><input type="checkbox" value="nature"> 🌿 Nature</label>
+                        <label class="ios-chip"><input type="checkbox" value="technologie"> 💻 Tech</label>
+                        <label class="ios-chip"><input type="checkbox" value="cinema"> 🎬 Cinéma</label>
+                        <label class="ios-chip"><input type="checkbox" value="spiritualite"> 🧘 Spiritualité</label>
+                        <label class="ios-chip"><input type="checkbox" value="gaming"> 🎮 Gaming</label>
+                        <label class="ios-chip"><input type="checkbox" value="animaux"> 🐾 Animaux</label>
+                    </div>
+
+                    <!-- Bouton Submit -->
+                    <div class="ios-button-container">
+                        <button type="submit" class="ios-btn-primary" id="submitBtn">
+                            <span class="btn-text">Révéler mon Âme Sœur</span>
+                            <span class="btn-loading" style="display:none;">
+                                <span class="ios-spinner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="ios-bottom-spacer"></div>
+            </div>
+        </div>
+
+        <!-- Page Quiz MBTI -->
+        <div class="ios-page" id="mbtiQuizPage">
+            <nav class="ios-navbar">
+                <div class="ios-navbar-content">
+                    <button class="ios-back-btn" id="mbtiBackBtn">
+                        <svg width="12" height="20" viewBox="0 0 12 20" fill="none">
+                            <path d="M10 2L2 10L10 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Retour
+                    </button>
+                    <h1 class="ios-nav-title centered">Test MBTI</h1>
+                </div>
+            </nav>
+
+            <div class="ios-scroll-content">
+                <!-- Progress bar -->
+                <div class="quiz-progress-container">
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                    </div>
+                    <span class="quiz-progress-text" id="quizProgressText">1 / 20</span>
+                </div>
+
+                <!-- Question -->
+                <div class="quiz-question-card" id="quizQuestionCard">
+                    <p class="quiz-question-text" id="quizQuestionText"></p>
+                    <div class="quiz-options" id="quizOptions"></div>
+                </div>
+
+                <div class="ios-bottom-spacer"></div>
+            </div>
+        </div>
+
+        <!-- Page Résultats -->
+        <div class="ios-page" id="resultsPage">
+            <!-- iOS Navigation Bar avec bouton retour -->
+            <nav class="ios-navbar">
+                <div class="ios-navbar-content">
+                    <button class="ios-back-btn" id="resetBtn">
+                        <svg width="12" height="20" viewBox="0 0 12 20" fill="none">
+                            <path d="M10 2L2 10L10 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Retour
+                    </button>
+                    <h1 class="ios-nav-title centered">Résultats</h1>
+                </div>
+            </nav>
+
+            <div class="ios-scroll-content">
+                <!-- Astro Card -->
+                <div class="ios-section-header">PROFIL ASTRAL</div>
+                <div class="ios-card result-card" id="astroCard">
+                    <div class="ios-card-header">
+                        <span class="ios-card-icon">♈</span>
+                        <h3>Ton Signe</h3>
+                    </div>
+                    <div id="astroContent"></div>
+                </div>
+
+                <!-- Numérologie Card -->
+                <div class="ios-section-header">NUMÉROLOGIE</div>
+                <div class="ios-card result-card" id="numeroCard">
+                    <div class="ios-card-header">
+                        <span class="ios-card-icon">🔢</span>
+                        <h3>Ton Chemin de Vie</h3>
+                    </div>
+                    <div id="numeroContent"></div>
+                </div>
+
+                <!-- MBTI Card -->
+                <div class="ios-section-header">COMPATIBILITÉ MBTI</div>
+                <div class="ios-card result-card" id="mbtiCard">
+                    <div class="ios-card-header">
+                        <span class="ios-card-icon">🧠</span>
+                        <h3>Ton Type</h3>
+                    </div>
+                    <div id="mbtiContent"></div>
+                </div>
+
+                <!-- Portrait Card -->
+                <div class="ios-section-header">PORTRAIT DE TON ÂME SŒUR</div>
+                <div class="ios-card result-card portrait-card" id="portraitCard">
+                    <div class="ios-card-header">
+                        <span class="ios-card-icon">💜</span>
+                        <h3>Le Portrait</h3>
+                    </div>
+                    <div id="portraitContent"></div>
+                </div>
+
+                <!-- Conseil Card -->
+                <div class="ios-section-header">CONSEIL COSMIQUE</div>
+                <div class="ios-card result-card" id="conseilCard">
+                    <div class="ios-card-header">
+                        <span class="ios-card-icon">🌟</span>
+                        <h3>Message des Étoiles</h3>
+                    </div>
+                    <div id="conseilContent"></div>
+                </div>
+
+                <!-- Schéma Visuel -->
+                <div class="ios-section-header">FICHE DE TON ÂME SŒUR</div>
+                <div class="schema-card result-card" id="schemaCard">
+                    <div id="schemaContent"></div>
+                </div>
+
+                <div class="ios-bottom-spacer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
