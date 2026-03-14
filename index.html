@@ -75,15 +75,38 @@
                     <div class="ios-section-header">PERSONNALITÉ</div>
                     <div class="ios-list-group">
                         <div class="ios-list-item mbti-quiz-trigger" id="mbtiTrigger">
-                            <label>Type MBTI</label>
+                            <label>Faire le test</label>
                             <div class="ios-list-item-right">
-                                <span id="mbtiResult" class="ios-detail-text">Faire le test</span>
+                                <span id="mbtiResult" class="ios-detail-text">20 questions</span>
                                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none" class="ios-chevron">
                                     <path d="M1 1L7 7L1 13" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                         </div>
+                        <div class="ios-list-item">
+                            <label for="mbtiSelect">Ou choisir</label>
+                            <select id="mbtiSelect">
+                                <option value="" disabled selected>Type MBTI</option>
+                                <option value="INTJ">INTJ — Architecte</option>
+                                <option value="INTP">INTP — Logicien</option>
+                                <option value="ENTJ">ENTJ — Commandant</option>
+                                <option value="ENTP">ENTP — Innovateur</option>
+                                <option value="INFJ">INFJ — Avocat</option>
+                                <option value="INFP">INFP — Médiateur</option>
+                                <option value="ENFJ">ENFJ — Protagoniste</option>
+                                <option value="ENFP">ENFP — Campaigner</option>
+                                <option value="ISTJ">ISTJ — Logisticien</option>
+                                <option value="ISFJ">ISFJ — Défenseur</option>
+                                <option value="ESTJ">ESTJ — Directeur</option>
+                                <option value="ESFJ">ESFJ — Consul</option>
+                                <option value="ISTP">ISTP — Virtuose</option>
+                                <option value="ISFP">ISFP — Aventurier</option>
+                                <option value="ESTP">ESTP — Entrepreneur</option>
+                                <option value="ESFP">ESFP — Animateur</option>
+                            </select>
+                        </div>
                     </div>
+                    <p class="ios-section-footer-text">Fais le test ou sélectionne ton type si tu le connais déjà.</p>
                     <input type="hidden" id="mbti" value="">
 
                     <!-- Groupe: Intérêts -->

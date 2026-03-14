@@ -258,6 +258,9 @@ function finishQuiz() {
     // Set hidden input
     document.getElementById("mbti").value = mbtiType;
 
+    // Sync dropdown
+    document.getElementById("mbtiSelect").value = mbtiType;
+
     // Update trigger display
     const resultEl = document.getElementById("mbtiResult");
     resultEl.textContent = mbtiType + " — " + MBTI_DATA[mbtiType].nom;
@@ -606,10 +609,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const resetBtn = document.getElementById("resetBtn");
     const mbtiTrigger = document.getElementById("mbtiTrigger");
     const mbtiBackBtn = document.getElementById("mbtiBackBtn");
+    const mbtiSelect = document.getElementById("mbtiSelect");
+    const mbtiHidden = document.getElementById("mbti");
+    const mbtiResultEl = document.getElementById("mbtiResult");
 
     // Open MBTI quiz
     mbtiTrigger.addEventListener("click", () => {
         startQuiz();
+    });
+
+    // Direct MBTI selection
+    mbtiSelect.addEventListener("change", () => {
+        const type = mbtiSelect.value;
+        if (type) {
+            mbtiHidden.value = type;
+            mbtiResultEl.textContent = type + " ✓";
+            mbtiResultEl.classList.add("completed");
+        }
     });
 
     // Back from quiz
