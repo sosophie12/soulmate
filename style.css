@@ -77,8 +77,10 @@ body {
     flex-direction: column;
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                opacity 0.35s ease;
+                opacity 0.35s ease,
+                visibility 0s linear 0.35s;
     opacity: 0;
+    visibility: hidden;
     will-change: transform, opacity;
     z-index: 1;
 }
@@ -87,12 +89,14 @@ body {
     transform: translateX(0);
     opacity: 1;
     z-index: 2;
+    visibility: visible;
 }
 
 .ios-page.behind {
-    transform: translateX(-30%);
-    opacity: 0.5;
+    transform: translateX(-100%);
+    opacity: 0;
     z-index: 1;
+    visibility: hidden;
 }
 
 /* ---- iOS Navigation Bar ---- */
